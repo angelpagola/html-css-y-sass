@@ -1,0 +1,85 @@
+header {
+    width: 100%;
+    height: 50px;
+    background: $menu;
+    color: #ffffff;
+    position: fixed;
+    top: 0;
+    z-index: 100; // Para que tape a todos
+    .contenedor {
+        display: table; //para limpiar el contenedor
+        width: 95%;
+        .logo {
+            float: left;
+            font-size: 1.5em;
+            margin: 10px 10px 10px 0;
+            font-family: $font-title;
+            font-weight: bold;
+        }
+        label {
+            float: right;
+            font-size: 28px;
+            margin: 6px 0;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all .5s ease;
+        }
+        label:hover {
+            background: #fff;
+            color: $menu;
+        }
+        .menu {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 100%;
+            height: 100vh; //Para que ocupe siempre 100% el alto de la ventana
+            background: $menu;
+            opacity: 0.9;
+            transition: all 0.5s;
+            transform: translateX(-100%);
+            a {
+                font-family: $font-title;
+                display: block;
+                color: #ffffff;
+                height: 50px;
+                text-decoration: none;
+                padding: 15px 15px 15px 25px;
+                border-bottom: 1px solid #fff;
+                text-indent: -10px;
+            }
+            a:hover {
+                background: rgba(255, 255, 255, 0.3);
+            }
+        }
+        #menu-bar {
+            display: none;
+        }
+        #menu-bar:checked~.menu {
+            /*Cuando tenga el check lo llama*/
+            transform: translateX(0%);
+        }
+    }
+}
+
+@media( min-width:1024px) {
+    header {
+        .contenedor {
+            label {
+                display: none;
+            }
+            .menu {
+                position: static;
+                width: auto;
+                height: auto;
+                transform: translateX(0%);
+                float: right;
+                display: flex;
+                a {
+                    border: none;
+                }
+            }
+        }
+    }
+}
